@@ -1,19 +1,13 @@
 {% block container %}
-{%load static%}
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <h1> 
             {% for profile in profile.all %}
             {% if current_user.profile.image %}
-            <img src="{{ profile.images.url }}" width= 70, 
-                 alt="{{ profile.images}}">
-            {% else %}
-                <img src = "{{MEDIA_URL}} profile/images/pngegg.jpg">
-
+            <img src="{{ profile.image.url }}" width= 70, 
+                 alt="{{ profile.image}}">
             {%endif%}
             {{ current_user.profile.nickname }}
-            </h1>
         </div>
         <div class="col-9">
            
@@ -26,6 +20,6 @@
     
     {% if user == current_user%}
     <div>
-        <a href="{% url 'profile_update' %}">프로필 수정</a>
+        <a href="{% url 'profile_update' %}">프로필</a>
     {% endif %}
 {% endblock %}

@@ -60,6 +60,7 @@ def logout(request):
     return render(request, 'login.html')
 
 def profile_update(request):
+    
     profile = request.user.profile
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, request.FILES, instance = profile)

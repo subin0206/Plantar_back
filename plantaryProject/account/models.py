@@ -9,7 +9,7 @@ class Profile(models.Model):
     image = ProcessedImageField(
         blank = True,
         upload_to = 'profile/images',
-        default = 'settings.MEDIA_ROOT/profile/images/pngegg',
+        default = 'settings.MEDIA_ROOT/profile/images/pngegg.png',
         processors = [ResizeToFill(300,300)],
         format = 'JPEG',
         options = {'quality':90},

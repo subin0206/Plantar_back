@@ -18,5 +18,5 @@ def ourdiary_list(request):
 
     if  request.session.get('user'):
         mydiary = ourdiary.filter(author_id = request.user).order_by('-id')
-        return render(request,'home.html',{'ourdiarys':ourdiarys,'current_user':current_user, 'mydiary':mydiary, 'profile': Profile})
+        return render(request,'home.html',{'ourdiarys':ourdiarys,'current_user':current_user, 'mydiary':mydiary, 'profile': profile})
     return render(request,'home.html',{'ourdiarys':ourdiarys,'current_user':current_user, 'profile': Profile})

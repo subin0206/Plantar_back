@@ -37,6 +37,10 @@
       {%  ifequal forloop.counter 1 %}
       <h1>{{ourdiary.title}}</h1>
       <p>{{ourdiary.summary}}<a href = "{%url 'detail' ourdiary.id%}" >...more</a></p>
+      {% for photo in ourdiary.photo_set.all %}
+    <img src = "{{photo.image.url}}" width="100">
+    <br>
+    {% endfor %}
       <br><br>
       {% endifequal %}
     {%  ifequal forloop.counter 2 %}
@@ -61,8 +65,17 @@
     {%endfor%}
 <h1>profile</h1>
     {% for profile in profile.all %}
+      {% if current_user.profile.image %}
+            <img src="{{ profile.image.url }}" width= 70, 
+                 alt="{{ profile.image}}">
+      {%endif%}
+
       {{ current_user.profile.nickname }}
       {{ current_user.profile.description }}
     {%endfor%}
+     {% if user == current_user%}
+    <div>
+        <a href="{% url 'profile_update' %}">프로필</a>
+    {% endif %}
 </body>
 {% endautoescape %}
